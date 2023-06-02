@@ -47,6 +47,7 @@ table {
     border-collapse: collapse;
 }
 
+
 table th, table td {
     text-align:left;
     font-size:14px;
@@ -117,29 +118,47 @@ ul.errorlist {
 
 
 #header {
-    padding:10px 100px;
-    font-size:18px;
+    padding:20px 200px 0px;
+    font-size:300px;
     overflow:auto;
+
 }
 
-#subheader {
-    background:#ececec;
-    color:#444;
-    padding:15px 100px;
-    overflow:auto;
+
+/*aside img {*/
+/*    width: 80px;*/
+/*    !*float: left;*!*/
+/*    font-size:5%;*/
+/*    margin-right:2%;*/
+/*}*/
+
+aside ul {list-style: none}
+aside ul li {
+    color: #ababab;
+    display: block;
+    font-weight: bold;
+    float: left;
+    margin: auto;
+    padding: 25px;
+    height: 6vh;
+    font-size: 85%;
 }
 
-#header .logo {
-    font-family: 'Ubuntu', sans-serif;
-    float:left;
-    color:#333;
-    font-size:22px;
-    margin-right:10%;
+aside ul li:hover {
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+aside {
+    background: #666666;
+    position: relative;
+    overflow:auto;
 }
 
 #subheader .cart {
     float:right;
-    padding-top:4px;
+    /*padding-top:4px;*/
 }
 
 #content {
@@ -154,7 +173,7 @@ ul.errorlist {
 }
 
 #sidebar ul{
-    margin:0;
+    margin:0%;
     padding:0;
 }
 
@@ -169,12 +188,12 @@ ul.errorlist {
 }
 
 #sidebar ul li.selected {
-    background:#5993bb;
+    background: #6e4cfd;
     border-radius:4px;
 }
 
 #sidebar ul li.selected a {
-    color:#fff;
+    color: #ffffff;
 }
 
 #main {
@@ -185,8 +204,8 @@ ul.errorlist {
 }
 
 .product-list .item {
-    width:25%;
-    padding:10px 20px 10px 0;
+    width:20%;
+    padding:40px 30px 10px 0;
     float:left;
     text-align:center;
     line-height:1.2;
@@ -194,7 +213,7 @@ ul.errorlist {
 
 .product-list .item img {
     width:100%;
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
 .product-detail {
@@ -315,7 +334,7 @@ ul.errorlist {
     width:120px;
 }
 
-/* braintree hosted fields */
+ braintree hosted fields
 form div.field {
     font-size:13px;
     color:#666;
@@ -328,3 +347,8 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+
+/*body {*/
+/*    background: mediumvioletred;*/
+/*}*/
