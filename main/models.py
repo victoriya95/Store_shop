@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
+
 
 
 class Category(models.Model):
@@ -41,7 +43,8 @@ class Product(models.Model):
         index_together = (('id', 'slug'),)
 
     def __str__(self):
-        return self.name_product
+        return f'Продукт: {self.name_product} | Категория: {self.category.name_category}'
+        # return self.name_product
 
 
     def get_absolute_url(self):

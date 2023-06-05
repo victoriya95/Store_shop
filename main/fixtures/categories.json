@@ -1,0 +1,42 @@
+[
+  {
+    "model": "main.category",
+    "pk": 1,
+    "fields": {
+      "name_category": "Женская одежда",
+      "slug_category": "zhenskaya-odezhda"
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 2,
+    "fields": {
+      "name_category": "Мужская одежда",
+      "slug_category": "muzhskaya-odezhda"
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 3,
+    "fields": {
+      "name_category": "Электроника",
+      "slug_category": "elektronika"
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 4,
+    "fields": {
+      "name_category": "Красота и здоровье",
+      "slug_category": "krasota-i-zdorove"
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 5,
+    "fields": {
+      "name_category": "Товары для животных",
+      "slug_category": "tovary-dlya-zhivotnyh"
+    }
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "model": "main.product",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "name_product": "Платье Posh Style",
+      "slug": "plate-posh-style",
+      "image_product": "product/2023/06/01/6593879846.webp",
+      "description_product": "Стильное женское шифоновое платье с юбкой средней длинны. Легкий шифон необходимая вешь в летнем гардеробе любой девушки.",
+      "price_product": "2600.00",
+      "available": true,
+      "created": "2023-06-01T18:09:48.023Z",
+      "uploaded": "2023-06-01T18:09:48.024Z"
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name_product": "Джинсы",
+      "slug": "dzhinsy",
+      "image_product": "product/2023/06/01/6630173173.webp",
+      "description_product": "Джинсы женские с высокой посадкой, скини, трубы прямые, бананы отлично подойдут для любого типа фигуры, джинсы свободные широкие в бедрах и зауженные к низу.",
+      "price_product": "3000.00",
+      "available": true,
+      "created": "2023-06-01T18:11:01.150Z",
+      "uploaded": "2023-06-01T18:11:01.150Z"
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "name_product": "Джинсовая куртка BOCHETTI",
+      "slug": "dzhinsovaya-kurtka-bochetti",
+      "image_product": "product/2023/06/01/6618212504.webp",
+      "description_product": "Куртка джинсовая прямого кроя выполнена из плотного 100% хлопка. Мужская джинсовая весенняя куртка с небольшим отложным воротником представлена в больших размерах.",
+      "price_product": "4500.00",
+      "available": true,
+      "created": "2023-06-01T18:12:48.378Z",
+      "uploaded": "2023-06-01T18:12:48.378Z"
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "name_product": "Джинсы BOCHETTI",
+      "slug": "dzhinsy-bochetti",
+      "image_product": "product/2023/06/01/6537621347.webp",
+      "description_product": "Классические базовые джинсы прямого кроя с удобной средней посадкой - безукоризненный вариант для любого типа фигуры. Брючина в колене имеет свободное облегание.",
+      "price_product": "3500.00",
+      "available": true,
+      "created": "2023-06-01T18:13:41.047Z",
+      "uploaded": "2023-06-01T18:13:41.047Z"
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 7,
+    "fields": {
+      "category": 4,
+      "name_product": "Lador Корейский шампунь и кондиционер",
+      "slug": "lador-korejskij-shampun-i-kondicioner",
+      "image_product": "product/2023/06/01/6531502870.webp",
+      "description_product": "В набор входят: восстанавливающий шампунь для сухих, поврежденных и окрашенных волос с аргановым маслом и коллагеном Lador Damaged Protector Acid Shampoo 900 мл и Защитный кондиционер для поврежденных волос Lador Damage Protector Acid Conditioner 900 мл.",
+      "price_product": "1500.00",
+      "available": true,
+      "created": "2023-06-01T18:14:45.452Z",
+      "uploaded": "2023-06-01T18:14:45.452Z"
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 8,
+    "fields": {
+      "category": 5,
+      "name_product": "Интерактивная игрушка для кошки, мячик с мятой со звуком птиц для кошек и собак.",
+      "slug": "interaktivnaya-igrushka-dlya-koshki-myachik-s-myatoj-so-zvukom-ptic-dlya-koshek-i-sobak",
+      "image_product": "product/2023/06/02/6645084762.webp",
+      "description_product": "нтерактивная игрушка для кошек с кошачьей мятой - идеальный выбор для забавного и безопасного времяпрепровождения вашей пушистой любимицы.",
+      "price_product": "450.00",
+      "available": true,
+      "created": "2023-06-01T18:16:04.719Z",
+      "uploaded": "2023-06-02T08:36:39.762Z"
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 9,
+    "fields": {
+      "category": 3,
+      "name_product": "Смартфон realme C55 6/128 ГБ, черный",
+      "slug": "smartfon-realme-c55-6128-gb-chernyj",
+      "image_product": "product/2023/06/01/6621843283.webp",
+      "description_product": "Комплектация\r\nтелефон, кабель USB Type-C, адаптер питания 11V/3A, защитный чехол, скрепка для извлечения лотка SIM карт, руководство по эксплуатации, буклет с важной информацией и гарантийный талон",
+      "price_product": "13999.00",
+      "available": true,
+      "created": "2023-06-01T18:17:20.034Z",
+      "uploaded": "2023-06-01T18:17:20.034Z"
+    }
+  }
+]

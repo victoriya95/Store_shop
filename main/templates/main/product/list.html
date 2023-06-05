@@ -1,8 +1,10 @@
-{% extends "main/base.html" %}
+{% extends "main/product/base.html" %}
 {% load static %}
+
 {% block title %}
-    {% if category %}{{ category.name_category }}{% else %}Товары{% endif %}
+    {% if category %}{{ category.name_category }}{% else %}Каталог{% endif %}
 {% endblock %}
+
 {% block content %}
     <div id="sidebar">
         <h3>Категория</h3>
@@ -17,6 +19,7 @@
             {% endfor %}
         </ul>
     </div>
+
     <div id="main" class="product-list">
         <h1>{% if category %}{{ category.name_category }}{% else %}Товар{% endif %}</h1>
         {% for product in products %}

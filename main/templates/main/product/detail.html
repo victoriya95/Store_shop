@@ -1,41 +1,36 @@
-{#{% extends "main/base.html" %}#}
-{#{% load static %}#}
-{#{% block title %}#}
-{#    {{ product.name_product }}#}
-{#{% endblock %}#}
-{#{% block content %}#}
-{#    <div class="product-detail">#}
-{#        <img src="{% if product.image_product %}{{ product.image_product.url }}{% else %}#}
-{#{% static "img/log.png" %}{% endif %}">#}
-{#        <h1>{{ product.name_product }}</h1>#}
-{#        <h2>#}
-{#            <a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a>#}
-{#        </h2>#}
-{#        <p class="price">${{ product.price_product }}</p>#}
-{#        {{ product.description_product|linebreaks }}#}
-{#    </div>#}
-{#{% endblock %}#}
-
-
-{% extends "main/base.html" %}
+{% extends "main/product/base.html" %}
 {% load static %}
+
 {% block title %}
     {{ product.name_product }}
 {% endblock %}
+
 {% block content %}
     <div class="product-detail">
-        <img src="{% if product.image_product %}{{ product.image_product.url }}{% else %}
-{% static " img/flower.png" %}{% endif %}">
+        <img src="{% if product.image_product %}{{ product.image_product.url }}
+                    {% else %}{% static " img/flower.png" %}{% endif %}">
+
         <h1>{{ product.name_product }}</h1>
         <h2>
             <a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a>
         </h2>
+
         <p class="price">${{ product.price_product }}</p>
-            <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                {{ cart_product_form }}
-                {% csrf_token %}
-                <input type="submit" value="В корзину">
-            </form>
+
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            <input type="submit" value="В корзину">
+        </form>
         {{ product.description|linebreaks }}
     </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Store 2023</p>
+        </div>
+    </footer>
 {% endblock %}
