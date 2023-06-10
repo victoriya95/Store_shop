@@ -1,0 +1,29 @@
+aside{
+
+    width: 27%;
+    padding: 2.5%;
+    height: 50vh;
+    color: white;
+}
+
+
+
+#main {
+    width: 96%;
+    margin-right:-120px;
+    overflow:hidden;
+}
+
+.product-list .item {
+    width:30%;
+    padding:50px 50px 50px 50px;
+    float:left;
+    text-align:center;
+    /*line-height:1.2;*/
+}
+
+.product-list .item img {
+    width:100%;
+    margin-bottom:50px;
+}
+

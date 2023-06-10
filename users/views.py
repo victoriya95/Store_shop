@@ -15,11 +15,13 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('users:profile'))
+                return HttpResponseRedirect(reverse('main:home_page'))
     else:
         form = UserLoginForm()
     context = {'form': form}
     return render(request, 'users/login.html', context)
+
+
 
 
 def registration(request):

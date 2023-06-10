@@ -14,6 +14,8 @@ class UserLoginForm(AuthenticationForm):
         model = User
         fields = ('username', 'password')
 
+
+
 class UserRegistrationForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control py-4', 'placeholder': 'Введите имя'}))
@@ -31,6 +33,8 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+
 
 
 class UserProfileForm(UserChangeForm):
