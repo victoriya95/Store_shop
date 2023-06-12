@@ -13,7 +13,6 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('profile/', profile, name='profile'),
     path('logout/', logout, name='logout'),
-    # path('profile/<int:pk>/', login_required(UserProfileView.as_view()), name='profile'),
 
 
 ]

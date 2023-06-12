@@ -108,6 +108,8 @@
 
 
 
+
+
                             {% if product.image_product %}{{ product.image_product.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
                 </a>
 
@@ -121,10 +123,12 @@
 
                 <button type="button" href="#" class="btn btn-warning text-dark">{{ product.price_product }} руб.
                 </button>
-                {#                <button type="button" href="{% url 'main:basket_add' product_id %}" class="btn btn-dark text-warning">В#}
-                <button type="button" href="" class="btn btn-dark text-warning">В
-                    корзину
-                </button>
+
+                <a class="btn-outline-dark" href="{% url 'main:basket_add' product.id %}">Оправить в корзину</a>
+                {#                <a class="btn btn-outline-dark" href="{% url 'main:basket_add %}">Отправить в корзину</a>#}
+                {#                <button type="button" href="{% url 'main:basket_add' product.id %}" class="btn btn-dark text-warning">В#}
+                {#                    корзину#}
+                {#                </button>#}
             </div>
         {% endfor %}
     </div>
