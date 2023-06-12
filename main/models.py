@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
+from users.models import User
 
 
 
@@ -49,3 +50,15 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('main:product_detail', args=[self.id, self.slug])
+
+
+# class Basket(models.Model):
+#     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+#     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+#     quantity = models.PositiveSmallIntegerField(default=0)
+#     created_timestamp = models.DateTimeField(auto_now_add=True)
+#
+#     # objects = BasketQuerySet.as_manager()
+#
+#     def __str__(self):
+#         return f'Корзина для {self.user.email_user()} | Продукт: {self.product.name_product}'

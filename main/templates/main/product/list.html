@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 
 
-    {#ВЕРХНЯЯ ЧАСТЬ ПОД ШАПКОЙ#}
+    {#    ВЕРХНЯЯ ЧАСТЬ ПОД ШАПКОЙ#}
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container-fluid">
 
-{#        КНОПКА НАЗАД#}
+            {#            КНОПКА НАЗАД#}
             <a class="btn btn-dark mx-2" href="{% url 'main:home_page' %}" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-backspace-fill" viewBox="0 0 16 16">
@@ -24,7 +24,7 @@
                 </svg>
                 Назад</a>
 
-            {#        ВОЙТИ#}
+            {#            ВОЙТИ#}
             <div class="row ">
                 <div class="col-sm-5">
                     {% if user.is_authenticated %}
@@ -35,9 +35,9 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'users:logout' %}">Профиль</a>
+                                    <a class="dropdown-item" href="{% url 'users:profile' %}">Профиль</a>
                                 </li>
-                                {#                                <li><a class="dropdown-item" href="{% url 'orders:orders_list' %}">Заказы</a></li>#}
+                                <li><a class="dropdown-item" href="#">Заказы</a></li>
                                 {% if user.is_superuser or user.is_staff %}
                                     <li>
                                         <a class="dropdown-item" href="{% url 'admin:index' %}">
@@ -81,7 +81,7 @@
 
                 </div>
             </div>
-            {#    КОРЗИНА#}
+            {#            КОРЗИНА#}
             <a class="nav-link " href="{% url 'users:login' %}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-cart-dash"
@@ -98,23 +98,15 @@
     {#    КОНЕЦ ВЕРХНЕЙ ЧАСТИ ПОД ШАПКОЙ#}
 
 
-
-
-
-
-
-
-
-
-
-
-{#    ТОВАРЫ#}
-<div class="btn-group" type="button" class="btn btn-default">
+    {#    ТОВАРЫ#}
+    <div class="btn-group" type="button" class="btn btn-default">
     <div id="main" class="product-list">
         {% for product in products %}
             <div class="item">
                 <a href="{{ product.get_absolute_url }}">
                     <img src="
+
+
 
                             {% if product.image_product %}{{ product.image_product.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
                 </a>
@@ -129,13 +121,14 @@
 
                 <button type="button" href="#" class="btn btn-warning text-dark">{{ product.price_product }} руб.
                 </button>
-                <button type="button" href="#" class="btn btn-dark text-warning">В корзину</button>
-
-
+                {#                <button type="button" href="{% url 'main:basket_add' product_id %}" class="btn btn-dark text-warning">В#}
+                <button type="button" href="" class="btn btn-dark text-warning">В
+                    корзину
+                </button>
             </div>
         {% endfor %}
     </div>
-{#КОНЕЦ ТОВАРЫ#}
+    {#    КОНЕЦ ТОВАРЫ#}
 
 
 
@@ -148,241 +141,3 @@
 
 {% endblock %}
 
-
-
-
-
-
-
-
-
-
-{#******************************#}
-{#{% block content %}#}
-{##}
-{#    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">#}
-{#        <div class="container-fluid">#}
-{#            <button class="navbar-toggler" type="button" data-toggle="collapse"#}
-{#                    data-target="#navbarResponsive">#}
-{#                <span class="navbar-toggler-icon"></span>#}
-{#            </button>#}
-{#            <div class="collapse navbar-collapse" id="navbarResponsive">#}
-{#                <ul class="navbar-nav ml-auto"></ul>#}
-{#            </div>#}
-{#            <div class="row ">#}
-{#                <div class="col-sm-5">#}
-{#                    {% if user.is_authenticated %}#}
-{#                        <div class="btn-group dropstart">#}
-{#                            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"#}
-{#                                    data-bs-toggle="dropdown" aria-expanded="false">#}
-{#                                <span class="visually-hidden"></span>#}
-{#                            </button>#}
-{#                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">#}
-{#                                <li>#}
-{#                                    <a class="dropdown-item" href="{% url 'users:logout' %}">Профиль</a>#}
-{#                                </li>#}
-{#                                <li><a class="dropdown-item" href="{% url 'orders:orders_list' %}">Заказы</a></li>#}
-{#                                {% if user.is_superuser or user.is_staff %}#}
-{#                                    <li>#}
-{#                                        <a class="dropdown-item" href="{% url 'admin:index' %}">#}
-{#                                            Админ-панель#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                {% endif %}#}
-{#                                <li>#}
-{#                                    <hr class="dropdown-divider">#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <a class="dropdown-item" href="{% url 'users:logout' %}">#}
-{#                                        Выйти#}
-{#                                    </a>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                            <button type="button" class="btn btn-warning">#}
-{#                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"#}
-{#                                     class="bi bi-person-circle" viewBox="0 0 16 16">#}
-{#                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>#}
-{#                                    <path fill-rule="evenodd"#}
-{#                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>#}
-{#                                </svg>#}
-{#                            </button>#}
-{#                            </li>#}
-{#                            {% else %}#}
-{##}
-{#                            <a class="nav-link " href="{% url 'users:login' %}">#}
-{#                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"#}
-{#                                     class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">#}
-{#                                    <path fill-rule="evenodd"#}
-{#                                          d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>#}
-{#                                    <path fill-rule="evenodd"#}
-{#                                          d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>#}
-{#                                </svg>#}
-{#                                Войти <i class="fas fa-sign-in-alt"></i></a>#}
-{#                        </div>#}
-{#                    {% endif %}#}
-{#                </div>#}
-{#            </div>#}
-{#    КОРЗИНА#}
-{#            <a class="nav-link " href="{% url 'users:login' %}">#}
-{#                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"#}
-{#                     class="bi bi-cart-dash"#}
-{#                     viewBox="0 0 16 16">#}
-{#                    <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>#}
-{#                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>#}
-{#                </svg>#}
-{#                Корзина <i class="fas fa-sign-in-alt"></i></a>#}
-{#        </div>#}
-{#        </div>#}
-{#    </nav>#}
-{##}
-{##}
-{#    <nav>#}
-{#    <div class="container-fluid">#}
-{#        <div class="row flex-nowrap">#}
-{#            <div class="bg-secondary col-auto min-vh-10">#}
-{#                <div class="bg-secondary p-8">#}
-{#                    <a class="d-flex text-decoration-none mt-1 align-items-center text-warning">#}
-{#                        <span class="fs-4 d-none d-sm-inline my-3 mx-3"><strong>КАТЕГОРИИ</strong></span>#}
-{#                    </a>#}
-{#                    <ul class="nav nav-pills flex-column mt-4">#}
-{##}
-{##}
-{#                        {% for c in categories %}#}
-{#                            <li class="nav-item">#}
-{#                                <i class="fs-5 fa fa-gauge"></i><span class="fs-4 ms-3 d-none d-sm-inline">#}
-{#                                    <a class="nav-link text-dark my-auto"#}
-{#                                       href="{{ c.get_absolute_url }}">{{ c.name_category }}</a></span>#}
-{#                            </li>#}
-{#                        {% endfor %}#}
-{##}
-{#                        <a class="nav-item">#}
-{#                            <i class="fs-5 fa fa-gauge"></i><span class="fs-4 ms-3 d-none d-sm-inline">#}
-{#                                    <a class="nav-link text-dark "#}
-{#                                       href="{% url 'main:home_page' %}"><u>Главная страница</u>#}
-{#                                        <i class="fas fa-sign-in-alt"></i></a></span>#}
-{#                        </a>#}
-{##}
-{#                        </li>#}
-{##}
-{#            <a class="nav-link " href="{% url 'users:login' %}">#}
-{##}
-{##}
-{#                    </ul>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{##}
-{# ТОВАРЫ   #}
-{#            <div class="container-fluid">#}
-{#                {% for product in products %}#}
-{#                    <div class="row" >#}
-{#                        <div class="col-md-3 col-sm-6" >#}
-{#                            <div class="item my-5">#}
-{##}
-{#                                <a href="{{ product.get_absolute_url }}">#}
-{#                                    <img class="w-100 my-4 mx-4"#}
-{#                                         src="#}
-{#                                    {% if product.image_product %}{{ product.image_product.url }}{% else %}#}
-{#                                    {% static 'img/log.png' %}{% endif %}"></a>#}
-{##}
-{##}
-{#                                <div class="my-3 mx-3">#}
-{#                                    <a href="{{ product.get_absolute_url }}">{{ product.name_product }}</a>}#}
-{#                                    <br>#}
-{#                                    <div class="p-3 mb-2 bg-warning text-dark">#}
-{#                                        {{ product.price_product }} руб.#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{##}
-{##}
-{#        </div>#}
-{#    </div>#}
-{#    </nav>#}
-{#{% endblock %}#}
-
-
-{#*********************#}
-
-{#старое#}
-{#            <div class="container-fluid">#}
-{#                {% for product in products %}#}
-{#                    <div class="row" >#}
-{#                        <div class="col-md-3 col-sm-6" >#}
-{#                            <div class="item my-5">#}
-{##}
-{#                                <a href="{{ product.get_absolute_url }}">#}
-{#                                    <img class="w-100 my-4 mx-4"#}
-{#                                         src="#}
-{#                                    {% if product.image_product %}{{ product.image_product.url }}{% else %}#}
-{#                                    {% static 'img/log.png' %}{% endif %}"></a>#}
-{##}
-{##}
-{#                                <div class="my-3 mx-3">#}
-{#                                    <a href="{{ product.get_absolute_url }}">{{ product.name_product }}</a>}#}
-{#                                    <br>#}
-{#                                    <div class="p-3 mb-2 bg-warning text-dark">#}
-{#                                        {{ product.price_product }} руб.#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-
-
-{#ВОТ ТУТ#}
-
-
-{##}
-{#        <aside>#}
-{#                <span class="logo">КАТЕГОРИИ</span>#}
-{#                <ul>#}
-{#                {% for c in categories %}#}
-{#                        <i class="fs-5 fa fa-gauge"></i><span class="fs-4 ms-3 d-none d-sm-inline">#}
-{#                                                <a class="nav-link text-dark my-1"#}
-{#                                                   href="{{ c.get_absolute_url }}">{{ c.name_category }}</a></span>#}
-{#                     </li>#}
-{#                {% endfor %}#}
-{##}
-{#                    <a class="nav-item">#}
-{#                        <i class="fs-5 fa fa-gauge"></i><span class="fs-4 ms-3 d-none d-sm-inline">#}
-{#                                                <a class="nav-link text-dark "#}
-{#                                                   href="{% url 'main:home_page' %}"><u>Главная страница</u>#}
-{#                                                    <i class="fas fa-sign-in-alt"></i></a></span>#}
-{#                    </a>#}
-{#                </ul>#}
-{#        </aside>#}
-
-
-{#<div class="d-flex p-2">#}
-{#    <div id="main" class="product-list">#}
-{#        {% for product in products %}#}
-{#            <div class="item">#}
-{#                <a href="{{ product.get_absolute_url }}">#}
-{#                    <img src="#}
-{##}
-{#                            {% if product.image_product %}{{ product.image_product.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">#}
-{#                </a>#}
-{##}
-{#                <div class="text-truncate" style="width: 20rem;">#}
-{#                    <a href="{{ product.get_absolute_url }}">{{ product.name_product }}</a></div>#}
-{#                <br>#}
-{##}
-{#                <figcaption class="blockquote-footer">#}
-{#                    <a href="{{ product.get_absolute_url }}">{{ product.category }}</a>#}
-{#                </figcaption>#}
-{##}
-{#                <button type="button" href="#" class="btn btn-warning text-dark">{{ product.price_product }} руб.#}
-{#                </button>#}
-{#                <button type="button" href="#" class="btn btn-dark text-warning">В корзину</button>#}
-{##}
-{##}
-{#            </div>#}
-{#        {% endfor %}#}
-{#    </div></div>#}

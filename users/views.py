@@ -1,9 +1,13 @@
+from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth, messages
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic import UpdateView, CreateView
 
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+
 
 
 def login(request):
@@ -38,6 +42,9 @@ def registration(request):
     return render(request, 'users/registration.html', context)
 
 
+
+
+
 def profile(request):
     if request.method == "POST":
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
@@ -48,10 +55,13 @@ def profile(request):
             print(form.errors)
     else:
         form = UserProfileForm(instance=request.user)
-    context = {'title': 'Store - Профиль', 'form': form}
+    context = {
+        'title': 'Store - Профиль',
+        'form': form}
     return render(request, 'users/profile.html', context)
 
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('users:login'))
+    return HttpResponseRedirect(reverse('main:home_page'))
+

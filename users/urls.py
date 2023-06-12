@@ -15,4 +15,5 @@ urlpatterns = [
     path('logout/', logout, name='logout'),
     # path('profile/<int:pk>/', login_required(UserProfileView.as_view()), name='profile'),
 
+
 ]

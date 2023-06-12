@@ -4,6 +4,7 @@ from django import forms
 from users.models import User
 
 
+
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control py-4', 'placeholder': 'Введите имя пользователя'}))
@@ -33,6 +34,11 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+    # def save(self, commit=True):
+    #     user = super(UserRegistrationForm, self).save(commit=True)
+    #     send_email_verification.delay(user.id)
+    #     return user
 
 
 
