@@ -35,7 +35,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'users:profile' %}">Профиль</a>
+                                    <a class="dropdown-item" href="{% url 'users:profile' user.id %}">Профиль</a>
                                 </li>
                                 {#                                <li><a class="dropdown-item" href="{% url 'orders:orders_list' %}">Заказы</a></li>#}
                                 {% if user.is_superuser or user.is_staff %}
@@ -124,14 +124,14 @@
                                 <button type="button" class="btn btn-warning text-dark"><a
                                         href="{% url 'main:basket_add' product.id %}">В корзину</a>
                                 </button>
+
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             {% endfor %}
         </div>
+
     </div>
 
 

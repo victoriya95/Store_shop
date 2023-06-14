@@ -31,7 +31,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'users:profile' %}">Профиль</a>
+                                    <a class="dropdown-item" href="{% url 'users:profile' user.id %}">Профиль</a>
                                 </li>
                                 {#                                <li><a class="dropdown-item" href="{% url 'orders:orders_list' %}">Заказы</a></li>#}
                                 {% if user.is_superuser or user.is_staff %}
@@ -88,29 +88,6 @@
     </nav>
 
     {#    КОНЕЦ ВЕРХНЕЙ ЧАСТИ ПОД ШАПКОЙ#}
-
-    {#    ОСНОВНОЕ#}
-    {#        <div class="product-detail">#}
-    {#        <img src="{% if product.image_product %}{{ product.image_product.url }}#}
-    {#                    {% else %}{% static " img/flower.png" %}{% endif %}">#}
-    {##}
-    {#        <h1>{{ product.name_product }}</h1>#}
-    {#        <h2>#}
-    {#            <a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a>#}
-    {#        </h2>#}
-    {##}
-    {#            <p class="price">${{ product.price_product }}</p>#}
-    {##}
-    {#        <form action="{% url 'cart:cart_add' product.id %}" method="post">#}
-    {#            {{ cart_product_form }}#}
-    {#            {% csrf_token %}#}
-    {#            <input type="submit" value="В корзину">#}
-    {#        </form>#}
-    {#        {{ product.description|linebreaks }}#}
-    {#    </div>#}
-
-
-
 
 
     <div class="container-fluid">
