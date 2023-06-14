@@ -18,13 +18,21 @@
 
     <nav class="navbar" style="background-color: #ffc107;">
         <div class="container-fluid">
-            <img src="{% static 'main/img/Logo.png' %}" alt="connect" style="max-height:70px">
+            <a class="container-fluid" href="{% url 'main:home_page' %}">
+                <img src="{% static 'main/img/Logo.png' %}" alt="connect" style="max-height:70px"></a>
         </div>
-
     </nav>
 
 </head>
 
+
+{#            КНОПКА НАЗАД#}
+<a class="btn btn-dark mx-3 my-3" href="{% url 'main:product_list' %}" role="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+         class="bi bi-backspace-fill" viewBox="0 0 16 16">
+        <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+    </svg>
+    Назад</a>
 
 
 <div class="container">
@@ -56,7 +64,7 @@
                 <div class="form-row mb-2">
                     <div class="col-lg-12">
                         <div class="custom-file">
-                            {{ form.image}}
+                            {{ form.image }}
                             <label class="custom-file-label my-4" for="{{ form.image.id_for_label }}"></label>
                         </div>
                     </div>
@@ -85,3 +93,21 @@
         </div>
     </div>
 </div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="border-style: dashed;">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503Z"/>
+                    </svg>
+                    Company, 2023
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

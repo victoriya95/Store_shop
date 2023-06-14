@@ -8,10 +8,11 @@ from cart.forms import CartAddProductForm
 from users.models import User
 
 
-def product_list(request, category_slug=None):
+def product_list(request, category_slug=None, category_id=None):
     category = None
     categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
+    # products = Product.objects.filter(available=True)
+    products = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -21,6 +22,8 @@ def product_list(request, category_slug=None):
                       'categories': categories,
                       'products': products
                   })
+
+
 
 
 def product_detail(request, id, slug):

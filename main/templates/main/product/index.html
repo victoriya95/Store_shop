@@ -45,13 +45,14 @@
                                 {% for c in categories %}
                                     <li {% if category.slug_category == c.slug %}class="selected" {% endif %}>
                                     <li><a class="dropdown-item"
-                                           href="{{ c.get_absolute_url }}">{{ c.name_category }}</a></li>
+                                           href="{% url 'main:category' c.id %}">{{ c.name_category }}</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
 
                                     <li class="divider"></li>
                                 {% endfor %}
+
                             </div>
 
                         </ul>
@@ -95,7 +96,14 @@
                                           d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                 </svg>
                             </button>
-                            </li>
+                            {#    КОРЗИНА#}
+                            <button type="button" class="btn btn-warning mx-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                            </button>
+
                             {% else %}
 
                             <a class="nav-link " href="{% url 'users:login' %}">
@@ -109,21 +117,9 @@
                                 Войти <i class="fas fa-sign-in-alt"></i></a>
                         </div>
                     {% endif %}
-
-                    </li>
-
                 </div>
+
             </div>
-            {#    КОРЗИНА#}
-            <a class="nav-link " href="{% url 'users:login' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-cart-dash"
-                     viewBox="0 0 16 16">
-                    <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                </svg>
-                Корзина <i class="fas fa-sign-in-alt"></i></a>
-        </div>
         </div>
 
     </nav>
@@ -131,54 +127,54 @@
     <main>
 
         {#    слайдер автомат#}
-{#        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">#}
-{#            <div class="carousel-inner">#}
-{#                <div class="carousel-item active">#}
-{#                    <img src="static/main/img/1.jpg" class="d-block w-100" alt="...">#}
-{#                </div>#}
-{#                <div class="carousel-item">#}
-{#                    <img src="static/main/img/2.jpg" class="d-block w-100" alt="...">#}
-{#                </div>#}
-{#                <div class="carousel-item">#}
-{#                    <img src="static/main/img/3.jpg" class="d-block w-100" alt="...">#}
-{#                </div>#}
-{#                <div class="carousel-item">#}
-{#                    <img src="static/main/img/4.jpg" class="d-block w-100" alt="...">#}
-{#                </div>#}
-{#                <div class="carousel-item">#}
-{#                    <img src="static/main/img/5.jpg" class="d-block w-100" alt="...">#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+        {#        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">#}
+        {#            <div class="carousel-inner">#}
+        {#                <div class="carousel-item active">#}
+        {#                    <img src="static/main/img/1.jpg" class="d-block w-100" alt="...">#}
+        {#                </div>#}
+        {#                <div class="carousel-item">#}
+        {#                    <img src="static/main/img/2.jpg" class="d-block w-100" alt="...">#}
+        {#                </div>#}
+        {#                <div class="carousel-item">#}
+        {#                    <img src="static/main/img/3.jpg" class="d-block w-100" alt="...">#}
+        {#                </div>#}
+        {#                <div class="carousel-item">#}
+        {#                    <img src="static/main/img/4.jpg" class="d-block w-100" alt="...">#}
+        {#                </div>#}
+        {#                <div class="carousel-item">#}
+        {#                    <img src="static/main/img/5.jpg" class="d-block w-100" alt="...">#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
 
-{#            слайдер со стрелками#}
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="static/main/img/1.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="static/main/img/2.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="static/main/img/3.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="static/main/img/4.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="static/main/img/5.jpg" class="d-block w-100" alt="...">
-                    </div>
+        {#            слайдер со стрелками#}
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="static/main/img/1.jpg" class="d-block w-100" alt="...">
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Предыдущий</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Следующий</span>
-                </button>
+                <div class="carousel-item">
+                    <img src="static/main/img/2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="static/main/img/3.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="static/main/img/4.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="static/main/img/5.jpg" class="d-block w-100" alt="...">
+                </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </button>
+        </div>
     </main>
 
     <nav>

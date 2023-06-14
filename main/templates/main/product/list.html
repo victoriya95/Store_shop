@@ -9,7 +9,7 @@
 
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet"/>
 
 
     {#    ВЕРХНЯЯ ЧАСТЬ ПОД ШАПКОЙ#}
@@ -17,7 +17,7 @@
         <div class="container-fluid">
 
             {#            КНОПКА НАЗАД#}
-            <a class="btn btn-dark mx-2" href="{% url 'main:home_page' %}" role="button">
+            <a class="btn btn-dark mx-2 my-2" href="{% url 'main:home_page' %}" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-backspace-fill" viewBox="0 0 16 16">
                     <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
@@ -37,7 +37,7 @@
                                 <li>
                                     <a class="dropdown-item" href="{% url 'users:profile' %}">Профиль</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Заказы</a></li>
+                                {#                                <li><a class="dropdown-item" href="{% url 'orders:orders_list' %}">Заказы</a></li>#}
                                 {% if user.is_superuser or user.is_staff %}
                                     <li>
                                         <a class="dropdown-item" href="{% url 'admin:index' %}">
@@ -62,7 +62,15 @@
                                           d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                 </svg>
                             </button>
-                            </li>
+                            {#    КОРЗИНА#}
+                            <button type="button" class="btn btn-warning mx-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                            </button>
+
+
                             {% else %}
 
                             <a class="nav-link " href="{% url 'users:login' %}">
@@ -77,71 +85,59 @@
                         </div>
                     {% endif %}
 
-                    </li>
-
                 </div>
             </div>
-            {#            КОРЗИНА#}
-            <a class="nav-link " href="{% url 'users:login' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-cart-dash"
-                     viewBox="0 0 16 16">
-                    <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                </svg>
-                Корзина <i class="fas fa-sign-in-alt"></i></a>
-        </div>
-        </div>
-
     </nav>
 
     {#    КОНЕЦ ВЕРХНЕЙ ЧАСТИ ПОД ШАПКОЙ#}
 
 
-    {#    ТОВАРЫ#}
-    <div class="btn-group" type="button" class="btn btn-default">
-    <div id="main" class="product-list">
-        {% for product in products %}
-            <div class="item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="
+    {#    МЕНЮ#}
+    <button class="tablink"><a href="{% url 'main:product_list' %}" class="list-group-item">Все категории</a></button>
+    {% for categor in categories %}
+        <button class="tablink"><a href="{% url 'main:category' categor.id %}"
+                                   class="list-group-item">{{ categor.name_category }}</a></button>
+    {% endfor %}
+    {#КОНЕЦ МЕНЮ#}
 
 
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-thumb">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src=" {% if product.image_product %}{{ product.image_product.url }}
+                                    {% else %}{% static 'img/no_image.png' %}{% endif %}">
+                            </a>
+                        </div>
+                        <div class="product-details">
+                            <h4><a href="{{ product.get_absolute_url }}">{{ product.name_product }}</a></h4>
+                            <p><a href="{{ product.get_absolute_url }}">{{ product.description_product }}</a></p>
+                        </div>
+                        <div class="product-bottom-details d-flex justify-content-between">
+                            <div class="product-price">
+                                <button type="button" class="btn btn-warning text-dark"><a
+                                        href="{{ product.get_absolute_url }}">{{ product.price_product }} руб.</a>
+                                </button>
+                                <button type="button" class="btn btn-warning text-dark"><a
+                                        href="{% url 'main:basket_add' product.id %}">В корзину</a>
+                                </button>
+                            </div>
+                        </div>
 
 
-
-                            {% if product.image_product %}{{ product.image_product.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
-                </a>
-
-                <div class="span2">
-                    <a href="{{ product.get_absolute_url }}">{{ product.name_product }}</a></div>
-                <br>
-
-                <figcaption class="blockquote-footer">
-                    <a href="{{ product.get_absolute_url }}">{{ product.category }}</a>
-                </figcaption>
-
-                <button type="button" href="#" class="btn btn-warning text-dark">{{ product.price_product }} руб.
-                </button>
-
-                <a class="btn-outline-dark" href="{% url 'main:basket_add' product.id %}">Оправить в корзину</a>
-                {#                <a class="btn btn-outline-dark" href="{% url 'main:basket_add %}">Отправить в корзину</a>#}
-                {#                <button type="button" href="{% url 'main:basket_add' product.id %}" class="btn btn-dark text-warning">В#}
-                {#                    корзину#}
-                {#                </button>#}
-            </div>
-        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    {#    КОНЕЦ ТОВАРЫ#}
-
-
-
-
-
-
-
-
 
 
 {% endblock %}
+
+
+
+
 

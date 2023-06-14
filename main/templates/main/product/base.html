@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
 
-    <title>
-        {% block title %} {% endblock %}
-    </title>
+<title>
+    {% block title %} {% endblock %}
+</title>
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Store</title>
@@ -16,48 +17,21 @@
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
     <link href="npm i bootstrap-icons" rel="stylesheet">
-    <link rel="stylesheet" href="static/main/css/style.css">
-
-
 
 
     <nav class="navbar" style="background-color: #ffc107;">
         <div class="container-fluid">
-            <img src="{% static 'main/img/Logo.png' %}" alt="connect" style="max-height:70px" >
-
-
-
-{#                <nav class="navbar" style="background-color: #ffc107;">#}
-{#        <div class="container-fluid">#}
-{#            <img src="{% static 'main/img/Logo.png' %}" alt="connect" style="max-height:70px">#}
-
-{#            <a class="navbar-brand" href="#">#}
-{#                <img src="static/main/img/Logo.png" alt="Logo" width="130" height="50"#}
-{#                     class="d-inline-block lign-text-top">#}
-{##}
-{#            </a>#}
-
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
-                <button class="btn btn-outline-dark" type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-search"
-                         viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
-                </button>
-            </form>
+                <a class="container-fluid" href="{% url 'main:home_page' %}">
+            <img src="{% static 'main/img/Logo.png' %}" alt="connect" style="max-height:70px"></a>
         </div>
-
     </nav>
 
 </head>
-
+{#<a class="btn btn-dark mx-2" href="{% url 'main:home_page' %}" role="button">#}
 
 <div id="content">
     {% block content %} {% endblock %}
 </div>
-
 
 
 <footer>
