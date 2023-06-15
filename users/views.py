@@ -1,8 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth, messages
 from django.urls import reverse, reverse_lazy
 
-
+from common.views import TitleMixin
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from main.models import Basket
@@ -57,6 +58,7 @@ class UserProfileView(UpdateView):
 
 
 
+
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('main:home_page'))
@@ -80,7 +82,7 @@ def logout(request):
 
 
 
-
+#
 # @login_required
 # def profile(request):
 #     if request.method == "POST":

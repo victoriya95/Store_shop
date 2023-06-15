@@ -40,7 +40,7 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     uploaded = models.DateTimeField(auto_now=True)
     stripe_product_price_id = models.CharField(max_length=150, null=True, blank=True)
-    reviews = models.CharField(max_length=250, blank=True)
+    quantity = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ('name_product',)
@@ -80,7 +80,6 @@ class BasketQuerySet(models.QuerySet):
         line_items = []
         for basket in self:
             item = {
-                # 'price': basket.product.stripe_product_price_id,
                 'price': basket.product.stripe_product_price_id,
                 'quantity': basket.quantity,
             }
@@ -88,18 +87,16 @@ class BasketQuerySet(models.QuerySet):
         return line_items
 
 
-
-
 class Basket(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
-    created_timestamp = models.DateTimeField(auto_now_add=True)
     quantity = models.PositiveSmallIntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = BasketQuerySet.as_manager()
 
     def __str__(self):
-        return f'Корзина для {self.user.username} | Продукт: {self.product.name_product}'
+        return f'Корзина для {self.user.username} | Продукт: {self.product.name}'
 
     def sum(self):
         return self.product.price_product * self.quantity
@@ -113,19 +110,17 @@ class Basket(models.Model):
         }
         return basket_item
 
+    @classmethod
+    def create_or_update(cls, product_id, user):
+        baskets = Basket.objects.filter(user=user, product_id=product_id)
 
-    #
-    # @classmethod
-    # def create_or_update(cls, product_id, user):
-    #     baskets = Basket.objects.filter(user=user, product_id=product_id)
-    #
-    #     if not baskets.exists():
-    #         obj = Basket.objects.create(user=user, product_id=product_id, quantity=1)
-    #         is_created = True
-    #         return obj, is_created
-    #     else:
-    #         basket = baskets.first()
-    #         basket.quantity += 1
-    #         basket.save()
-    #         is_crated = False
-    #         return basket, is_crated
+        if not baskets.exists():
+            obj = Basket.objects.create(user=user, product_id=product_id, quantity=1)
+            is_created = True
+            return obj, is_created
+        else:
+            basket = baskets.first()
+            basket.quantity += 1
+            basket.save()
+            is_crated = False
+            return basket, is_crated
