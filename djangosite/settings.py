@@ -12,17 +12,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 CART_SESSION_ID = 'cart'
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-q^ol%4mr011c9q%iz2_j3o7xo^!u=gq15v!2r)bbjmd75!o3a_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -30,11 +26,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Application definition
+DOMAIN_NAME = 'http://127.0.0.1:8000'
 
 INSTALLED_APPS = [
     'main',
     'users',
+    'orders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,14 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.humanize',
 
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.github',
-    # 'debug_toolbar',
-    # 'django_extensions',
-    # 'rest_framework',
-    # 'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.context_processors.cart',
+                'main.context_processors.baskets',
 
             ],
         },
@@ -143,3 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/users/login/'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51NIw5dKc9XhdJpTosIsdFBHDp016J3zE5v4r0WxnlapLu02g6A0oxdHos5kWW3mkFT704E4nWqJdVTE4JPe6CKyA003zj6nZg8'
+STRIPE_SECRET_KEY = 'sk_test_51NIw5dKc9XhdJpTo0Pb3OAYniMFm9gbOVE9hbdoNhwN59hDiIS6xGB0PSEcPtgiVFg8JHZGbaTBte1XbryZ8muGe00tAgE02bZ'
+STRIPE_WEBHOOK_SECRET = 'whsec_40827d5024a3844678cd035e315546333c58ef9289ec4d7e7ab10cfa672dbbb2'

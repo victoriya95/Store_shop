@@ -20,11 +20,14 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from orders.views import stripe_webhook_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls', namespace='main')),
     path('users/', include('users.urls', namespace='users')),
+    path('orders/', include('orders.urls', namespace='orders')),
+    path('webhook/stripe/', stripe_webhook_view, name='stripe_webhook'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
